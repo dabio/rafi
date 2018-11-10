@@ -1,0 +1,21 @@
+version: v1.0
+name: rafi
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Tests"
+    task:
+      prologue:
+        comands:
+          - checkout
+          - sem-version python 3.7
+          - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+          - source $HOME/.poetry/env
+          - poetry install
+      jobs:
+      - name: Run Tests
+        commands:
+          - poetry run pytest
