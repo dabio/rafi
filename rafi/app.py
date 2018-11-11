@@ -2,8 +2,6 @@ import logging
 import re
 from collections import defaultdict
 
-__version__ = "0.1.1"
-
 
 class App(object):
     def __init__(self, app_name):
