@@ -9,13 +9,13 @@ blocks:
   - name: "Tests"
     task:
       prologue:
-        comands:
+        commands:
           - checkout
           - sem-version python 3.7
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
           - poetry install
       jobs:
-      - name: Run Tests
-        commands:
-          - poetry run pytest
+        - name: Run Tests
+          commands:
+            - poetry run pytest
