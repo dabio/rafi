@@ -6,15 +6,18 @@ agent:
     os_image: ubuntu1804
 
 blocks:
+  - name: "set things up"
+    task:
+      jobs:
+        - name: "setup"
+          commands:
+            - checkout
+            - sem-version python 3.7
+            - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+            - source $HOME/.poetry/env
+            - poetry install
   - name: "Tests"
     task:
-      prologue:
-        commands:
-          - checkout
-          - sem-version python 3.7
-          - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-          - source $HOME/.poetry/env
-          - poetry install
       jobs:
         - name: Run Tests
           commands:
