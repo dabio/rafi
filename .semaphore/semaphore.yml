@@ -18,11 +18,11 @@ blocks:
         - name: install and cache dependencies
           commands:
             - ls -la
+            - poetry config settings.virtualenvs.in-project true
             - poetry install
             - ls -la
-            - ls -la /home/semaphore/.cache/pypoetry
-            - ls -la /home/semaphore/.cache/pypoetry/virtualenvs
-            - cache store poetry-$(checksum poetry.lock) /home/semaphore/.cache/pypoetry/virtualenvs
+            - ls -la .semaphore/
+            - cache store poetry-$(checksum poetry.lock) ./.venv
 
   - name: tests
     task:
