@@ -17,11 +17,11 @@ def app():
 
     @demo.route("/hello/<param>")
     def param(param):
-        return "hello {}".format(param)
+        return f"hello {param}"
 
     @demo.route("/code/<code>")
     def code(code=200):
-        return "code: {}".format(code), code
+        return f"code: {code}", code
 
     @demo.route("/query")
     def query():
