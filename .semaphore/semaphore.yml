@@ -6,16 +6,32 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "set things up"
+  - name: install dependencies
     task:
       prologue:
         commands:
-          - checkout
           - sem-version python 3.7
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
-          - poetry install
+          - poetry config settings.virtualenvs.in-project true
+          - checkout
       jobs:
-        - name: Run Tests
+        - name: install and cache dependencies
+          commands:
+            - poetry install
+            - cache store poetry-$(checksum poetry.lock) .venv
+
+  - name: tests
+    task:
+      prologue:
+        commands:
+          - sem-version python 3.7
+          - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+          - source $HOME/.poetry/env
+          - poetry config settings.virtualenvs.in-project true
+          - checkout
+          - cache restore poetry-$(checksum poetry.lock) .venv
+      jobs:
+        - name: run rests
           commands:
             - poetry run pytest
