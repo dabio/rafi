@@ -13,11 +13,11 @@ blocks:
           - sem-version python 3.7
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
-          - poetry config settings.virtualenvs.in-project true
           - checkout
       jobs:
         - name: install and cache dependencies
           commands:
+            - poetry config settings.virtualenvs.in-project true
             - poetry install
             - cache store poetry-$(checksum poetry.lock) .venv
 
@@ -28,10 +28,10 @@ blocks:
           - sem-version python 3.7
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
-          - poetry config settings.virtualenvs.in-project true
           - checkout
-          - cache restore poetry-$(checksum poetry.lock) .venv
+          - cache restore poetry-$(checksum poetry.lock)
       jobs:
         - name: run rests
           commands:
+            - poetry config settings.virtualenvs.in-project true
             - poetry run pytest
