@@ -17,8 +17,11 @@ blocks:
       jobs:
         - name: install and cache dependencies
           commands:
+            - ls -la
             - poetry install
-            - poetry config --list
+            - ls -la
+            - ls -la /home/semaphore/.cache/pypoetry
+            - ls -la /home/semaphore/.cache/pypoetry/virtualenvs
             - cache store poetry-$(checksum poetry.lock) /home/semaphore/.cache/pypoetry/virtualenvs
 
   - name: tests
