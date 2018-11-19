@@ -19,7 +19,7 @@ blocks:
           commands:
             - ls -la
             - poetry config settings.virtualenvs.in-project true
-            - poetry install
+            - poetry install -vvv
             - ls -la
             - ls -la .semaphore/
             - cache store poetry-$(checksum poetry.lock) ./.venv
