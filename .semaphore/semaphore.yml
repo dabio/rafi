@@ -18,11 +18,9 @@ blocks:
         - name: install and cache dependencies
           commands:
             - cache restore poetry-$(checksum poetry.lock)
-            - poetry install -vvv
-            - ls -la
-            - ls -la ..
-            - pwd
-            - cache store poetry-$(checksum poetry.lock) /home/semaphore/.pyenv/3.7
+            - poetry install
+            - ls -la $HOME/.pyenv/3.7
+            - cache store poetry-$(checksum poetry.lock) $HOME/.pyenv/3.7
 
   - name: tests
     task:
