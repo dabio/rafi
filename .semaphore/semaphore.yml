@@ -22,7 +22,7 @@ blocks:
             - poetry install -vvv
             - ls -la
             - ls -la .semaphore/
-            - cache store poetry-$(checksum poetry.lock) ./.venv
+            - cache store poetry-$(checksum poetry.lock) /home/semaphore/.pyenv/3.7
 
   - name: tests
     task:
