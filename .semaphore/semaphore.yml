@@ -19,7 +19,7 @@ blocks:
           commands:
             #- cache restore poetry-$(checksum poetry.lock)
             - poetry install
-            - cd $HOME && cache store poetry-$(checksum poetry.lock) .pyenv/3.7
+            - cd $HOME && cache store poetry-$(checksum rafi/poetry.lock) .pyenv/3.7
 
   - name: tests
     task:
@@ -29,7 +29,7 @@ blocks:
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
           - checkout
-          - cd $HOME && cache restore poetry-$(checksum poetry.lock)
+          - cd $HOME && cache restore poetry-$(checksum rafi/poetry.lock)
       jobs:
         - name: run rests
           commands:
