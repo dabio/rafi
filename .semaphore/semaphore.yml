@@ -10,7 +10,6 @@ blocks:
     task:
       prologue:
         commands:
-          - cache clear
           - sem-version python 3.7
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
@@ -18,7 +17,6 @@ blocks:
       jobs:
         - name: install and cache dependencies
           commands:
-            #- cache restore poetry-$(checksum poetry.lock)
             - poetry install
             - cd $HOME && cache store poetry-$(checksum rafi/poetry.lock) .pyenv/3.7
 
@@ -30,9 +28,8 @@ blocks:
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
           - checkout
-          - cd $HOME && cache restore poetry-$(checksum rafi/poetry.lock)
+          - cd $HOME && cache restore poetry-$(checksum rafi/poetry.lock) && cd rafi
       jobs:
         - name: run rests
           commands:
-            - cd rafi
             - poetry run pytest
