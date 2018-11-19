@@ -17,11 +17,11 @@ blocks:
       jobs:
         - name: install and cache dependencies
           commands:
-            - ls -la
-            - poetry config settings.virtualenvs.in-project true
+            - cache restore poetry-$(checksum poetry.lock)
             - poetry install -vvv
             - ls -la
-            - ls -la .semaphore/
+            - ls -la ..
+            - pwd
             - cache store poetry-$(checksum poetry.lock) /home/semaphore/.pyenv/3.7
 
   - name: tests
