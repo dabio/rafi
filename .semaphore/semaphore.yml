@@ -17,9 +17,9 @@ blocks:
       jobs:
         - name: install and cache dependencies
           commands:
-            - cache restore poetry-$(checksum poetry.lock)
+            #- cache restore poetry-$(checksum poetry.lock)
             - poetry install
-            - cache store poetry-$(checksum poetry.lock) ../.pyenv/3.7
+            - cd $HOME && cache store poetry-$(checksum poetry.lock) .pyenv/3.7
 
   - name: tests
     task:
@@ -29,8 +29,9 @@ blocks:
           - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
           - source $HOME/.poetry/env
           - checkout
-          - cache restore poetry-$(checksum poetry.lock)
+          - cd $HOME && cache restore poetry-$(checksum poetry.lock)
       jobs:
         - name: run rests
           commands:
+            - cd rafi
             - poetry run pytest
