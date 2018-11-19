@@ -19,8 +19,7 @@ blocks:
           commands:
             - cache restore poetry-$(checksum poetry.lock)
             - poetry install
-            - ls -la $HOME/.pyenv/3.7
-            - cache store poetry-$(checksum poetry.lock) $HOME/.pyenv/3.7
+            - cache store poetry-$(checksum poetry.lock) ../.pyenv/3.7
 
   - name: tests
     task:
