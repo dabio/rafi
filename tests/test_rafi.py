@@ -17,11 +17,15 @@ def app():
 
     @demo.route("/hello/<param>")
     def param(param):
-        return "hello {}".format(param)
+        return f"hello {param}"
 
     @demo.route("/code/<code>")
     def code(code=200):
-        return ("code: {}".format(code), code)
+        return f"code: {code}", code
+
+    @demo.route("/query")
+    def query():
+        return demo.request.args.get("query")
 
     return demo
 
@@ -78,4 +82,11 @@ def test_empty_path(app, req):
         flask.request.path = ""
         res = app(flask.request)
         assert res[0] == "index"
+        assert res[1] == 200
+
+
+def test_request_object(app, req):
+    with req.test_request_context(path="/query?query=1234"):
+        res = app(flask.request)
+        assert res[0] == "1234"
         assert res[1] == 200

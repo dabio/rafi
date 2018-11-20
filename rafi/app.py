@@ -8,6 +8,7 @@ class App(object):
         self.app_name = app_name
         self.log = logging.getLogger(self.app_name)
         self.routes = defaultdict(dict)
+        self.request = None
 
     def route(self, path, methods=["GET"]):
         def decorator(f):
@@ -40,6 +41,7 @@ class App(object):
             if request.method not in self.routes[regex]:
                 return "", 405
 
+            self.request = request
             res = self.routes[regex][request.method](**match.groupdict())
             if isinstance(res, tuple):
                 return res

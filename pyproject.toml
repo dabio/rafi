@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rafi"
-version = "0.1.2"
+version = "0.2.0"
 description = "A tiny route dispatcher for Google Cloud Functions."
 authors = ["Danilo Braband <dbraband@gmail.com>"]
 license = "MIT"
