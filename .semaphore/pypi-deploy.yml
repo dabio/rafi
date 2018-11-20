@@ -1,0 +1,19 @@
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: deploy to pypi
+    task:
+      secrets:
+        - name: pypi
+      jobs:
+        - name: push
+          commands:
+            - sem-version python 3.7
+            - cache restore poetry-${SEMAPHORE_WORKFLOW_ID}
+            - source $HOME/.poetry/env
+            - checkout
+            - cd $HOME && cache restore poetry-$(checksum rafi/poetry.lock) && cd rafi
+            - poetry publish --build --username=${PYPI_USERNAME} --password=${PYPI_PASSWORD}
