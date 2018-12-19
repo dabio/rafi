@@ -9,7 +9,7 @@ A tiny route dispatcher for `Google Cloud Functions`_.
 
   @app.route("/hello/<name>")
   def index(name):
-      return "hello {}".format(name)
+      return f"hello {name}"
 
 In your `Google Cloud Function`__ set **Function to execute** to `app`.
 
