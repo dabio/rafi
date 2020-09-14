@@ -263,7 +263,7 @@ description = "pytest: simple powerful testing with Python"
 name = "pytest"
 optional = false
 python-versions = ">=3.5"
-version = "6.0.0"
+version = "6.0.2"
 
 [package.dependencies]
 atomicwrites = ">=1.0"
@@ -363,6 +363,7 @@ testing = ["pathlib2", "contextlib2", "unittest2"]
 
 [metadata]
 content-hash = "69827979c7d7f71cc707a5f7876f878d3fe3cb8df9eded513beff0e98a0faf6c"
+lock-version = "1.0"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -525,8 +526,8 @@ pyparsing = [
     {file = "pyparsing-2.4.0.tar.gz", hash = "sha256:1873c03321fc118f4e9746baf201ff990ceb915f433f23b395f5580d1840cb2a"},
 ]
 pytest = [
-    {file = "pytest-6.0.0-py3-none-any.whl", hash = "sha256:869ec27f9b89964ccfe4fbdd5ccb8d3f285aaa3e9aa16a8491b9c8829148c230"},
-    {file = "pytest-6.0.0.tar.gz", hash = "sha256:a64d8fb4c15cdc70dae047352e980a197d855747cc885eb332cb73ddcc769168"},
+    {file = "pytest-6.0.2-py3-none-any.whl", hash = "sha256:0e37f61339c4578776e090c3b8f6b16ce4db333889d65d0efb305243ec544b40"},
+    {file = "pytest-6.0.2.tar.gz", hash = "sha256:c8f57c2a30983f469bf03e68cdfa74dc474ce56b8f280ddcb080dfd91df01043"},
 ]
 regex = [
     {file = "regex-2020.7.14-cp27-cp27m-win32.whl", hash = "sha256:e46d13f38cfcbb79bfdb2964b0fe12561fe633caf964a77a5f8d4e45fe5d2ef7"},
