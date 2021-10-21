@@ -15,5 +15,3 @@ In your `Google Cloud Function`__ set **Function to execute** to `app`.
 
 .. _Google Cloud Functions: https://cloud.google.com/functions/
 __ `Google Cloud Functions`_
-
-- test
