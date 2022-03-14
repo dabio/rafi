@@ -16,7 +16,7 @@ exclude = ["example/"]
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.0"
+pytest = "^7.1"
 black = "^22.1"
 aiohttp = "^3.8"
 flask = "^2.0"
