@@ -17,7 +17,7 @@ python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
-black = "^22.3"
+black = "^22.6"
 aiohttp = "^3.8"
 flask = "^2.2"
 
